@@ -1,0 +1,1236 @@
+  [1m[36m (20.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (8.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateNotes (20141110110008)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141110110008"]]
+  [1m[35m (13.6ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20141117174033)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/ubuntu/workspace/Noteful/db/migrate/20141117174033_devise_create_users.rb:34)
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (2.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141117174033"]]
+  [1m[36m (12.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddUserIdToNotes (20141125011300)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "notes" ADD "user_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141125011300"]]
+  [1m[36m (9.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 142.129.8.206 at 2016-01-28 03:20:06 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (12.6ms)
+Warning. Error encountered while saving cache bc84a96c45f85ffbcf5778cf2a4a6c7ec2e582c1/clearfix.scssc: can't dump anonymous class #<Class:0x00000002d37f50>
+
+Warning. Error encountered while saving cache bc84a96c45f85ffbcf5778cf2a4a6c7ec2e582c1/home.css.scssc: can't dump anonymous class #<Class:0x00000002d37f50>
+
+Warning. Error encountered while saving cache bc84a96c45f85ffbcf5778cf2a4a6c7ec2e582c1/notes.css.scssc: can't dump anonymous class #<Class:0x00000002d37f50>
+
+Completed 200 OK in 1274ms (Views: 1254.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 142.129.8.206 at 2016-01-28 03:20:08 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 142.129.8.206 at 2016-01-28 03:20:09 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 142.129.8.206 at 2016-01-28 03:20:09 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 142.129.8.206 at 2016-01-28 03:20:09 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 142.129.8.206 at 2016-01-28 03:20:09 +0000
+
+
+Started GET "/" for 142.129.8.206 at 2016-01-28 03:20:11 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 164ms (Views: 162.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 199ms (Views: 198.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 208.120.18.112 at 2016-01-28 03:20:15 +0000
+
+
+Started GET "/users/sign_up" for 142.129.8.206 at 2016-01-28 03:20:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (15.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (87.1ms)
+Completed 200 OK in 292ms (Views: 274.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-01-28 03:20:16 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-01-28 03:20:16 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 208.120.18.112 at 2016-01-28 03:20:16 +0000
+
+
+Started POST "/users" for 142.129.8.206 at 2016-01-28 03:20:25 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pdla78mnweGZ0DkYoQDR/zeqi6fnPOkgUdIbawZaozs+xa6ohFV1NOcd4RGlswT2b4iynNdyOvmMPNBVk2mHog==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@test.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (31.8ms)
+Completed 200 OK in 463ms (Views: 190.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 142.129.8.206 at 2016-01-28 03:21:22 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r0E9MJxa+Ewzy2x8hNV6RWmUSM2HLdOhewoL8akI6CE0Xcl30ahMmU0GtHWAZq9MMbZx9rdjAHim5MDPPDvMuA==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@test.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered devise/shared/_links.html.erb (3.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 351ms (Views: 188.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 142.129.8.206 at 2016-01-28 03:21:34 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4ScteN7fLwptk/QV136R0mjifZkdkYmtZOIxQmfPIjF6O9k/ky2b3xNeLBzTzUTbMMBEoi3fWnS5DPp88vwGqA==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@test.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2016-01-28 03:21:34.662630"], ["email", "test@test.com"], ["encrypted_password", "$2a$10$x4JvslqH6U8chFTamXV/Q.KehXMwef6XXZFEAWjTC1r6XJAMlqGEK"], ["updated_at", "2016-01-28 03:21:34.662630"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2016-01-28 03:21:34.677660"], ["current_sign_in_ip", "142.129.8.206"], ["last_sign_in_at", "2016-01-28 03:21:34.677660"], ["last_sign_in_ip", "142.129.8.206"], ["sign_in_count", 1], ["updated_at", "2016-01-28 03:21:34.679719"]]
+  [1m[35m (8.8ms)[0m  commit transaction
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/
+Completed 302 Found in 136ms (ActiveRecord: 20.3ms)
+
+
+Started GET "/" for 142.129.8.206 at 2016-01-28 03:21:34 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 142ms (Views: 140.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-01-28 03:21:43 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.4ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 234ms (Views: 182.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes/new" for 142.129.8.206 at 2016-01-28 03:21:45 +0000
+Processing by NotesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered notes/_form.html.erb (16.2ms)
+  Rendered notes/new.html.erb within layouts/application (161.5ms)
+Completed 200 OK in 297ms (Views: 287.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/notes" for 142.129.8.206 at 2016-01-28 03:21:58 +0000
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lO8hYUaAZc1NNo2pyxhfhgqdSTJiNlm16cNAemAYNyQP89UmC3LRGDP7VaDPq4qPUr9wCVJ4imw0LYtE9SsTvQ==", "note"=>{"title"=>"test", "content"=>"I'm very basic"}, "commit"=>"Create Note"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "notes" ("content", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "I'm very basic"], ["created_at", "2016-01-28 03:21:58.032703"], ["title", "test"], ["updated_at", "2016-01-28 03:21:58.032703"], ["user_id", 1]]
+  [1m[35m (37.7ms)[0m  commit transaction
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/notes
+Completed 302 Found in 61ms (ActiveRecord: 38.4ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-01-28 03:21:58 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mNote Load (0.3ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 187ms (Views: 180.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 142.129.8.206 at 2016-01-28 03:22:08 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 290ms (Views: 288.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-01-28 03:22:11 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 189ms (Views: 181.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 142.129.8.206 at 2016-01-28 03:22:13 +0000
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 224ms (Views: 223.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-01-28 03:57:02 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (4.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 213ms (Views: 197.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/notes/1" for 142.129.8.206 at 2016-01-28 03:57:08 +0000
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mNote Load (0.4ms)[0m  SELECT  "notes".* FROM "notes" WHERE "notes"."user_id" = ? AND "notes"."id" = ? LIMIT 1  [["user_id", 1], ["id", 1]]
+  Rendered notes/show.html.erb within layouts/application (75.5ms)
+Completed 200 OK in 289ms (Views: 205.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/notes/1" for 142.129.8.206 at 2016-01-28 04:00:33 +0000
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mNote Load (0.3ms)[0m  SELECT  "notes".* FROM "notes" WHERE "notes"."user_id" = ? AND "notes"."id" = ? LIMIT 1  [["user_id", 1], ["id", 1]]
+  Rendered notes/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 234ms (Views: 128.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 09:50:09 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 192ms (Views: 191.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 208.120.18.112 at 2016-01-28 09:50:09 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 208.120.18.112 at 2016-01-28 09:50:09 +0000
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 208.120.18.112 at 2016-01-28 09:50:10 +0000
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 09:50:13 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 148ms (Views: 146.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 208.120.18.112 at 2016-01-28 09:50:16 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (59.2ms)
+Completed 200 OK in 212ms (Views: 210.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/password/new" for 208.120.18.112 at 2016-01-28 09:50:20 +0000
+Processing by Devise::PasswordsController#new as HTML
+  Rendered devise/shared/_links.html.erb (10.2ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (25.5ms)
+Completed 200 OK in 208ms (Views: 206.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 09:50:25 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 240ms (Views: 239.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 208.120.18.112 at 2016-01-28 09:50:28 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 305ms (Views: 303.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 09:50:29 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 174ms (Views: 173.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 208.120.18.112 at 2016-01-28 10:18:05 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 178ms (Views: 175.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 208.120.18.112 at 2016-01-28 10:18:18 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6t56JSJkpFnLrKql83JNQb+GnRoLqTbjYMZsHFKaRNa4uUZgJCMABNcV+z/AWEh9j6Y8Kyr6xJdXKbt9AWpUKQ==", "user"=>{"email"=>"pink.lightbulb@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (9.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (1.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'pink.lightbulb@gmail.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2016-01-28 10:18:18.407745"], ["email", "pink.lightbulb@gmail.com"], ["encrypted_password", "$2a$10$9mb6rkp5PvVukmiiKJnlTuQIpB9KuHhHJ.0bbRzkpsQr.USl4JE7W"], ["updated_at", "2016-01-28 10:18:18.407745"]]
+  [1m[35m (11.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 2  [["current_sign_in_at", "2016-01-28 10:18:18.425617"], ["current_sign_in_ip", "208.120.18.112"], ["last_sign_in_at", "2016-01-28 10:18:18.425617"], ["last_sign_in_ip", "208.120.18.112"], ["sign_in_count", 1], ["updated_at", "2016-01-28 10:18:18.427724"]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/
+Completed 302 Found in 164ms (ActiveRecord: 35.6ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 10:18:18 +0000
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered home/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 132ms (Views: 130.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:18:24 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 226ms (Views: 219.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/notes/new" for 208.120.18.112 at 2016-01-28 10:18:27 +0000
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered notes/_form.html.erb (2.3ms)
+  Rendered notes/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 224ms (Views: 218.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/notes" for 208.120.18.112 at 2016-01-28 10:19:13 +0000
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CMBkBUpH0fVfm6EHjVT0ZKbda28NISyL9Ty1hcpOVSFap1hATAB1qEMi8J2+fvFYlv3KXixy3v/C02Lkmb5F3g==", "note"=>{"title"=>"5:18", "content"=>"i can feel the slight raise of the scars on my hand."}, "commit"=>"Create Note"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "notes" ("content", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["content", "i can feel the slight raise of the scars on my hand."], ["created_at", "2016-01-28 10:19:13.610681"], ["title", "5:18"], ["updated_at", "2016-01-28 10:19:13.610681"], ["user_id", 2]]
+  [1m[36m (14.8ms)[0m  [1mcommit transaction[0m
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/notes
+Completed 302 Found in 180ms (ActiveRecord: 15.5ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:19:13 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 168ms (Views: 161.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/notes/new" for 208.120.18.112 at 2016-01-28 10:19:17 +0000
+Processing by NotesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered notes/_form.html.erb (2.3ms)
+  Rendered notes/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 176ms (Views: 168.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/notes" for 208.120.18.112 at 2016-01-28 10:19:39 +0000
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bFvnuba4z7kncmgJwHrzlLi/3v9Hfg5xr4udkGMgvdc+PNv8sP9r5DvLOZPzUPaoiJ9/zmYt/AWYZErxMNCtKA==", "note"=>{"title"=>"5:19", "content"=>"you have to let him go. give up."}, "commit"=>"Create Note"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "notes" ("content", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "you have to let him go. give up."], ["created_at", "2016-01-28 10:19:39.719360"], ["title", "5:19"], ["updated_at", "2016-01-28 10:19:39.719360"], ["user_id", 2]]
+  [1m[35m (15.1ms)[0m  commit transaction
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/notes
+Completed 302 Found in 28ms (ActiveRecord: 15.9ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:19:39 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 158ms (Views: 151.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/notes/new" for 208.120.18.112 at 2016-01-28 10:19:43 +0000
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered notes/_form.html.erb (2.2ms)
+  Rendered notes/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 221ms (Views: 214.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/notes" for 208.120.18.112 at 2016-01-28 10:20:34 +0000
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A3Zx2qENFy/X7XT+lm4j6qgBxXMeyCqsfNsHeScNOVNREU2fp0qzcstUJWSlRCbWmCFkQj+b2NhLNNAYdP0prA==", "note"=>{"title"=>"5:20", "content"=>"so much to do before returning home"}, "commit"=>"Create Note"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "notes" ("content", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["content", "so much to do before returning home"], ["created_at", "2016-01-28 10:20:34.854181"], ["title", "5:20"], ["updated_at", "2016-01-28 10:20:34.854181"], ["user_id", 2]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/notes
+Completed 302 Found in 26ms (ActiveRecord: 12.9ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:20:35 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 162ms (Views: 154.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/notes/new" for 208.120.18.112 at 2016-01-28 10:20:37 +0000
+Processing by NotesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered notes/_form.html.erb (2.3ms)
+  Rendered notes/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 178ms (Views: 173.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/notes" for 208.120.18.112 at 2016-01-28 10:21:52 +0000
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iLgF+fnxeNv1bOK/4hUYPZYe+MOc+grof3e3o6VRqT/a3zm8/7bchunVsyXRPx0Bpj5Z8r2p+JxImGDC9qG5wA==", "note"=>{"title"=>"5:21", "content"=>"i hope when i wake up the sun will be shining and i will hear the click clack of his typewriter."}, "commit"=>"Create Note"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "notes" ("content", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "i hope when i wake up the sun will be shining and i will hear the click clack of his typewriter."], ["created_at", "2016-01-28 10:21:52.607634"], ["title", "5:21"], ["updated_at", "2016-01-28 10:21:52.607634"], ["user_id", 2]]
+  [1m[35m (8.2ms)[0m  commit transaction
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/notes
+Completed 302 Found in 20ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:21:52 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 154ms (Views: 147.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-01-28 10:23:42 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered home/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 164ms (Views: 162.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:28:55 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+Completed 500 Internal Server Error in 34ms
+
+SyntaxError (/home/ubuntu/workspace/Noteful/app/models/note.rb:16: syntax error, unexpected '<', expecting end-of-input
+ <%= note.preview %>
+  ^):
+  app/models/note.rb:16: syntax error, unexpected '<', expecting end-of-input
+  app/controllers/notes_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (9.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (4.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (111.5ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:29:14 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+Completed 500 Internal Server Error in 31ms
+
+NoMethodError (undefined method `content' for main:Object):
+  app/models/note.rb:15:in `<top (required)>'
+  app/controllers/notes_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (11.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (106.1ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-01-28 10:30:01 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+Completed 500 Internal Server Error in 58ms
+
+NoMethodError (undefined method `content' for main:Object):
+  app/models/note.rb:15:in `<top (required)>'
+  app/controllers/notes_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (18.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (9.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (126.2ms)
+
+
+Started GET "/notes" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+Processing by NotesController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (7.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 202ms (Views: 198.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 71.183.2.153 at 2016-01-30 18:26:38 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 71.183.2.153 at 2016-01-30 18:26:39 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 71.183.2.153 at 2016-01-30 18:26:39 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 71.183.2.153 at 2016-01-30 18:26:39 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 71.183.2.153 at 2016-01-30 18:26:39 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 71.183.2.153 at 2016-01-30 18:26:39 +0000
+
+
+Started POST "/users/sign_in" for 71.183.2.153 at 2016-01-30 18:27:09 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ALh9xFA5IwALgetMn1wm6EPiwkB+vbudq0qxJT7lRNml0sltGH3cRRYUNZ8QuCCn+xLVzu6oKGNAoauVUza87w==", "user"=>{"email"=>"pink.lightbulb@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "pink.lightbulb@gmail.com"]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = 2[0m  [["remember_created_at", "2016-01-30 18:27:10.135481"], ["updated_at", "2016-01-30 18:27:10.152897"]]
+  [1m[35m (12.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 2  [["current_sign_in_at", "2016-01-30 18:27:10.201244"], ["current_sign_in_ip", "71.183.2.153"], ["sign_in_count", 2], ["updated_at", "2016-01-30 18:27:10.203867"]]
+  [1m[36m (11.4ms)[0m  [1mcommit transaction[0m
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/notes
+Completed 302 Found in 260ms (ActiveRecord: 30.2ms)
+
+
+Started GET "/notes" for 71.183.2.153 at 2016-01-30 18:27:10 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+Completed 500 Internal Server Error in 10ms
+
+NoMethodError (undefined method `content' for main:Object):
+  app/models/note.rb:15:in `<top (required)>'
+  app/controllers/notes_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (15.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (123.9ms)
+
+
+Started GET "/notes" for 71.183.2.153 at 2016-01-30 18:34:50 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mNote Load (0.4ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (18.2ms)
+Completed 500 Internal Server Error in 70ms
+
+NoMethodError (private method `preview' called for #<Note:0x007f548823fa08>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb__540651171102189759_70000423592960'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb__540651171102189759_70000423592960'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb__540651171102189759_70000423592960'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (7.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (7.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (115.9ms)
+
+
+Started POST "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace" for 71.183.2.153 at 2016-01-30 18:38:09 +0000
+
+ActionController::RoutingError (No route matches [POST] "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace"):
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0.beta) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0.beta) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.2.0.beta4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0.beta) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0.beta) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0.beta4) lib/rails/engine.rb:514:in `call'
+  railties (4.2.0.beta4) lib/rails/application.rb:161:in `call'
+  rack (1.6.0.beta) lib/rack/tempfile_reaper.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/lint.rb:49:in `_call'
+  rack (1.6.0.beta) lib/rack/lint.rb:37:in `call'
+  rack (1.6.0.beta) lib/rack/showexceptions.rb:24:in `call'
+  rack (1.6.0.beta) lib/rack/commonlogger.rb:33:in `call'
+  rack (1.6.0.beta) lib/rack/chunked.rb:54:in `call'
+  rack (1.6.0.beta) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_route.html.erb (6.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_table.html.erb (14.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (116.3ms)
+
+
+Started POST "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace" for 71.183.2.153 at 2016-01-30 18:38:12 +0000
+
+ActionController::RoutingError (No route matches [POST] "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace"):
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0.beta) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0.beta) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.2.0.beta4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0.beta) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0.beta) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0.beta4) lib/rails/engine.rb:514:in `call'
+  railties (4.2.0.beta4) lib/rails/application.rb:161:in `call'
+  rack (1.6.0.beta) lib/rack/tempfile_reaper.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/lint.rb:49:in `_call'
+  rack (1.6.0.beta) lib/rack/lint.rb:37:in `call'
+  rack (1.6.0.beta) lib/rack/showexceptions.rb:24:in `call'
+  rack (1.6.0.beta) lib/rack/commonlogger.rb:33:in `call'
+  rack (1.6.0.beta) lib/rack/chunked.rb:54:in `call'
+  rack (1.6.0.beta) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_route.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_table.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (78.4ms)
+
+
+Started POST "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace" for 71.183.2.153 at 2016-01-30 18:38:15 +0000
+
+ActionController::RoutingError (No route matches [POST] "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace"):
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0.beta) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0.beta) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.2.0.beta4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0.beta) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0.beta) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0.beta4) lib/rails/engine.rb:514:in `call'
+  railties (4.2.0.beta4) lib/rails/application.rb:161:in `call'
+  rack (1.6.0.beta) lib/rack/tempfile_reaper.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/lint.rb:49:in `_call'
+  rack (1.6.0.beta) lib/rack/lint.rb:37:in `call'
+  rack (1.6.0.beta) lib/rack/showexceptions.rb:24:in `call'
+  rack (1.6.0.beta) lib/rack/commonlogger.rb:33:in `call'
+  rack (1.6.0.beta) lib/rack/chunked.rb:54:in `call'
+  rack (1.6.0.beta) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_route.html.erb (4.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_table.html.erb (3.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (91.3ms)
+
+
+Started POST "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace" for 71.183.2.153 at 2016-01-30 18:38:17 +0000
+
+ActionController::RoutingError (No route matches [POST] "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace"):
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0.beta) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0.beta) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.2.0.beta4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0.beta) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0.beta) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0.beta4) lib/rails/engine.rb:514:in `call'
+  railties (4.2.0.beta4) lib/rails/application.rb:161:in `call'
+  rack (1.6.0.beta) lib/rack/tempfile_reaper.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/lint.rb:49:in `_call'
+  rack (1.6.0.beta) lib/rack/lint.rb:37:in `call'
+  rack (1.6.0.beta) lib/rack/showexceptions.rb:24:in `call'
+  rack (1.6.0.beta) lib/rack/commonlogger.rb:33:in `call'
+  rack (1.6.0.beta) lib/rack/chunked.rb:54:in `call'
+  rack (1.6.0.beta) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_route.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_table.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (87.4ms)
+
+
+Started POST "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace" for 71.183.2.153 at 2016-01-30 18:38:32 +0000
+
+ActionController::RoutingError (No route matches [POST] "/console/repl_sessions/048b4217d7c310a0a2db72803f38bc1d/trace"):
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:22:in `middleware_call'
+  web-console (2.0.0.beta4) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0.beta4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0.beta4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0.beta) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0.beta) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.2.0.beta4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0.beta) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0.beta4) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0.beta) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0.beta4) lib/rails/engine.rb:514:in `call'
+  railties (4.2.0.beta4) lib/rails/application.rb:161:in `call'
+  rack (1.6.0.beta) lib/rack/tempfile_reaper.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/lint.rb:49:in `_call'
+  rack (1.6.0.beta) lib/rack/lint.rb:37:in `call'
+  rack (1.6.0.beta) lib/rack/showexceptions.rb:24:in `call'
+  rack (1.6.0.beta) lib/rack/commonlogger.rb:33:in `call'
+  rack (1.6.0.beta) lib/rack/chunked.rb:54:in `call'
+  rack (1.6.0.beta) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0.beta) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_route.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/routes/_table.html.erb (4.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/routing_error.html.erb within rescues/layout (84.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 142.129.8.206 at 2016-02-01 03:46:01 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 351ms (Views: 330.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 142.129.8.206 at 2016-02-01 03:46:03 +0000
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 142.129.8.206 at 2016-02-01 03:46:03 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 142.129.8.206 at 2016-02-01 03:46:04 +0000
+
+
+Started GET "/" for 208.120.18.112 at 2016-02-01 03:46:09 +0000
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered home/index.html.erb within layouts/application (40.5ms)
+Completed 200 OK in 180ms (Views: 178.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 208.120.18.112 at 2016-02-01 03:46:09 +0000
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 208.120.18.112 at 2016-02-01 03:46:10 +0000
+
+
+Started GET "/users/sign_in" for 142.129.8.206 at 2016-02-01 03:46:13 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (17.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (112.4ms)
+Completed 200 OK in 267ms (Views: 259.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 142.129.8.206 at 2016-02-01 03:46:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 159ms (Views: 154.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-02-01 03:46:19 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mNote Load (0.4ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (55.7ms)
+Completed 500 Internal Server Error in 280ms
+
+NoMethodError (private method `preview' called for #<Note:0x007fcb44d6d140>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (18.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (134.6ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-02-01 03:46:20 +0000
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mNote Load (0.3ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (10.6ms)
+Completed 500 Internal Server Error in 29ms
+
+NoMethodError (private method `preview' called for #<Note:0x007fcb4442f6a0>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (23.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (5.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (131.9ms)
+
+
+Started GET "/" for 142.129.8.206 at 2016-02-01 03:46:58 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 139ms (Views: 137.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 142.129.8.206 at 2016-02-01 03:47:03 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 352ms (Views: 201.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users/sign_in" for 142.129.8.206 at 2016-02-01 03:47:10 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lehvWIu3TrpKewY5usftUvGLjOACDKpJ0dai/8xPSM4sK7+v3oA1acQCld/ytkR8rTlDKOmpTzHO9QTyO7V29w==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@test.com"]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2016-02-01 03:47:10.295892"], ["sign_in_count", 2], ["updated_at", "2016-02-01 03:47:10.298923"]]
+  [1m[35m (10.8ms)[0m  commit transaction
+Redirected to https://thinkful-rails-lightbulbproductions.c9users.io/
+Completed 302 Found in 131ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/" for 142.129.8.206 at 2016-02-01 03:47:10 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered home/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 135ms (Views: 132.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-02-01 03:47:13 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.4ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (16.1ms)
+Completed 500 Internal Server Error in 96ms
+
+NoMethodError (private method `preview' called for #<Note:0x007fcb4483bd70>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (12.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (10.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (136.0ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-02-01 03:47:14 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (7.3ms)
+Completed 500 Internal Server Error in 22ms
+
+NoMethodError (private method `preview' called for #<Note:0x007fcb54afa880>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (10.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (119.7ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-02-01 03:47:18 +0000
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered home/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 267ms (Views: 266.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 208.120.18.112 at 2016-02-01 03:47:21 +0000
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered home/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 336ms (Views: 334.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-02-01 03:47:32 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 35ms
+
+NoMethodError (private method `preview' called for #<Note:0x007fcb44da7390>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb___1756227719719704084_70255504694780'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (20.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (4.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (115.6ms)
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-02-01 03:47:33 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (16.4ms)
+Completed 500 Internal Server Error in 42ms
+
+NoMethodError (private method `preview' called for #<Note:0x00000005945660>):
+  app/views/notes/index.html.erb:12:in `block (2 levels) in _app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+  app/views/notes/index.html.erb:10:in `block in _app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+  app/views/notes/index.html.erb:9:in `_app_views_notes_index_html_erb___1756227719719704084_70255500685300'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_source.erb (14.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5/gems/web-console-2.0.0.beta4/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (150.7ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-02-01 03:51:13 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.5ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 422ms (Views: 302.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 142.129.8.206 at 2016-02-01 03:51:13 +0000
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 142.129.8.206 at 2016-02-01 03:51:14 +0000
+
+
+Started GET "/notes" for 208.120.18.112 at 2016-02-01 03:51:24 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 2]]
+  Rendered notes/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 158ms (Views: 151.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/clearfix-a453498d03028d55cb134c4dada3ffcb.css?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/jquery_ujs-ae280aaa31faeb1eb0139b5cd60e3356.js?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/home-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/notes-c15e1c77cb5b3534b610348cb9f3c56d.css?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/jquery-dfb1e594c3e61a04cc388702c3feec1f.js?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/kube-3494d3b81fb03cb45aa7d754a059bf35.css?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/application-5a5b226e7a1c7af0cdffe66a1dbae924.css?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/turbolinks-60c7d150bd7b7a75d67e6d1f0d4129a6.js?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/home-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/application-4553af0871b2c76ce829fbc5e624610e.js?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/assets/notes-5cf9e471f6dbffd4600ae141132a5888.js?body=1" for 208.120.18.112 at 2016-02-01 03:51:25 +0000
+
+
+Started GET "/notes/1/edit" for 142.129.8.206 at 2016-02-01 03:51:48 +0000
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered notes/_form.html.erb (49.7ms)
+  Rendered notes/edit.html.erb within layouts/application (63.3ms)
+Completed 200 OK in 299ms (Views: 288.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/notes/1" for 142.129.8.206 at 2016-02-01 03:51:52 +0000
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT  "notes".* FROM "notes" WHERE "notes"."user_id" = ? AND "notes"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 1]]
+  Rendered notes/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 144ms (Views: 136.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/notes" for 142.129.8.206 at 2016-02-01 03:51:55 +0000
+Processing by NotesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered notes/index.html.erb within layouts/application (121.2ms)
+Completed 200 OK in 260ms (Views: 255.0ms | ActiveRecord: 0.5ms)
